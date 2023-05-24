@@ -1,0 +1,18 @@
+<header class="bg-gray-800 text-white py-4 px-6">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-xl font-semibold">Converter</a>
+    
+    <button class="burger-btn" (click)="toggleMenu()" [ngClass]="{'open': isMenuOpen}">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+
+    <nav [ngClass]="{'open': isMenuOpen}" class="space-x-4">
+      <a href="#" class="text-gray-300 hover:text-white">Home</a>
+      <a href="#" class="text-gray-300 hover:text-white">About</a>
+      <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+      <a (click)="openModal()"  href="#" class="text-gray-300 hover:text-white">Currency</a>
+    </nav>
+  </div>
+</header>

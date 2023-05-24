@@ -1,0 +1,82 @@
+<div *ngIf="isModalOpen$ | async" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white relative rounded-lg p-6 w-9/12">
+    <h2 class="text-xl font-semibold mb-4 text-center">Currency Converter</h2>
+    
+    <button class="w-4 absolute right-2 top-2" (click)="closeModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <form class="flex items-center justify-between flex-col md:flex-row">
+      <div class="mb-4 w-9/12">
+        <label for="from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From
+        </label>
+        <select 
+          [(ngModel)]="selectedValueFrom"
+          (change)="onSelectFrom()"
+          name="from"
+          id="from" 
+          class="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option [ngValue]="undefined" disabled selected>Choose a currency</option>
+          <option *ngFor="let key of currentData" [value]="key[0]">{{ key[0] }}</option>
+        </select>
+
+        <div class="flex">
+          <label for="input-from" class="block m-auto text-sm font-medium text-gray-900 dark:text-white">Amount:</label>
+          <span
+            title="Base USD (American dollar)"
+            class="inline-flex items-center px-3 ml-2 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+            $
+          </span>
+          <input 
+            [(ngModel)]="inputValueFrom"
+            (input)="onInputFrom()"
+            name="amountFrom"
+            type="text" 
+            id="input-from"
+            class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+
+      </div>
+
+      <div class="w-9 w-20 p-4">
+        <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"></path>
+        </svg>
+      </div>
+
+      <div class="mb-4 w-9/12">
+        <label for="to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">To
+        </label>
+        <select 
+          [(ngModel)]="selectedValueTo"
+          (change)="onSelectTo()"
+          name="to"
+          id="to" 
+          class="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option [ngValue]="undefined" disabled selected>Choose a currency</option>
+          <option *ngFor="let key of currentData" [value]="key[0]">{{ key[0] }}</option>
+        </select>
+        
+        <div class="flex">
+          <label for="input-to" class="block m-auto text-sm font-medium text-gray-900 dark:text-white">Amount:</label>
+          <span
+            title="Base USD (American dollar)"
+            class="inline-flex items-center px-3 ml-2 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+            $
+          </span>
+          <input 
+            [(ngModel)]="inputValueTo"
+            (input)="onInputTo()"
+            name="amountTo"
+            type="text" 
+            id="input-to"
+            class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
