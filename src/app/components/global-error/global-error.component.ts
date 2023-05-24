@@ -6,8 +6,7 @@ import { ErrorService } from 'src/app/services/error.service';
   templateUrl: './global-error.component.html',
   styleUrls: ['./global-error.component.scss']
 })
-export class GlobalErrorComponent {
-  constructor(public errorService: ErrorService) {
 
-  };
+export class GlobalErrorComponent {
+  constructor(public errorService: ErrorService) {};
 }

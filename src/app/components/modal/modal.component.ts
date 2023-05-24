@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ICurrencyArrayData } from 'src/app/models/currency.model';
 import { ModalService } from '../../services/modal.service';
+import { ICurrencyData } from 'src/app/models/currency.model';
 
 @Component({
   selector: 'app-modal',
@@ -14,16 +14,16 @@ export class ModalComponent {
   inputValueTo: number =  1;
   currentCourseFrom: number;
   currentCourseTo: number;
-  @Input() currentData: ICurrencyArrayData[];
+  @Input() currentData: ICurrencyData[];
   isModalOpen$ = this.modalService.isModalOpen$;
   constructor(private modalService: ModalService) {}
 
   onSelectFrom(): void {
-    const currentCurrencyFrom = this.currentData.find(el => el[0] === this.selectedValueFrom);
+    const currentCurrencyFrom = this.currentData.find(el => el.cc === this.selectedValueFrom);
     this.inputValueFrom = 1;
 
     if(currentCurrencyFrom) {
-      this.currentCourseFrom = currentCurrencyFrom[1] 
+      this.currentCourseFrom = currentCurrencyFrom.rate;
       this.inputValueTo = this.currentCourseTo / this.currentCourseFrom;
     }
   }
@@ -39,10 +39,11 @@ export class ModalComponent {
   }
 
   onSelectTo(): void {
-    const currentCurrencyTo = this.currentData.find(el => el[0] === this.selectedValueTo);
+    const currentCurrencyTo = this.currentData.find(el => el.cc === this.selectedValueTo);
     this.inputValueFrom = 1;
+    
     if(currentCurrencyTo) {
-      this.currentCourseTo = currentCurrencyTo[1] 
+      this.currentCourseTo = currentCurrencyTo.rate; 
       this.inputValueTo = this.currentCourseTo / this.currentCourseFrom;
     }
   }

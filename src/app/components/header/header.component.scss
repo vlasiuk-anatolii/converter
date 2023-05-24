@@ -36,7 +36,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 64px;
+    top: 74px;
     right: 10px;
     width: 150px;
     background-color: #1f2937;
@@ -53,3 +53,10 @@
     margin: 0 0 10px  16px;
   }
 }
+
+@media (max-width: 390px) {
+  .currencies {
+    flex-direction: column;
+  }
+}
+

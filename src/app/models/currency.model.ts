@@ -1,42 +1,7 @@
 export interface ICurrencyData {
-  data: {
-    AUD: number,
-    BGN: number,
-    BRL: number,
-    CAD: number,
-    CHF: number,
-    CNY: number,
-    CZK: number,
-    DKK: number,
-    EUR: number,
-    GBP: number,
-    HKD: number,
-    HRK: number,
-    HUF: number,
-    IDR: number,
-    ILS: number,
-    INR: number,
-    ISK: number,
-    JPY: number,
-    KRW: number,
-    MXN: number,
-    MYR: number,
-    NOK: number,
-    NZD: number,
-    PHP: number,
-    PLN: number,
-    RON: number,
-    RUB: number,
-    SEK: number,
-    SGD: number,
-    THB: number,
-    TRY: number,
-    USD: number,
-    ZAR: number
-  }
-}
-
-export interface ICurrencyArrayData {
-  [0]: string;
-  [1]: number;
+  r030: number,
+  txt: string,
+  rate: number,
+  cc: string,
+  exchangedate: string
 }

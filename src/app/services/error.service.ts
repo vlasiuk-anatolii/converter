@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ErrorService {
   error$ = new Subject();
   
@@ -14,5 +15,4 @@ export class ErrorService {
   clear() {
     this.error$.next('');
   }
-
 }

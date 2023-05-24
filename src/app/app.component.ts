@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyService } from './services/currency.service';
-import { ICurrencyArrayData, ICurrencyData } from './models/currency.model';
+import { ICurrencyData } from './models/currency.model';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +10,26 @@ import { ICurrencyArrayData, ICurrencyData } from './models/currency.model';
 
 export class AppComponent implements OnInit {
   title = 'converter';
-  dataObject: ICurrencyData;
-  arrData: ICurrencyArrayData[];
+  arrData: ICurrencyData[];
+  currentRateUSD: number;
+  currentRateEUR: number;
 
   constructor(private currencyService: CurrencyService) {
   }
 
   ngOnInit(): void {
-    this.currencyService.getAll().subscribe((obj) => {
-      this.dataObject = { ...obj };
-      this.arrData = this.arrData = Object.entries(this.dataObject.data);
-    })
+    this.currencyService.getAll().subscribe((data) => {
+      this.arrData = [...data];
+      const dollar = this.arrData.find(el => el.cc === 'USD');
+      const evro = this.arrData.find(el => el.cc === 'EUR');
+      
+      if(dollar) {
+        this.currentRateUSD = dollar.rate;
+      }
+
+      if(evro) {
+        this.currentRateEUR = evro.rate;
+      }
+    });
   }
 }

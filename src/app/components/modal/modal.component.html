@@ -20,7 +20,7 @@
           id="from" 
           class="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option [ngValue]="undefined" disabled selected>Choose a currency</option>
-          <option *ngFor="let key of currentData" [value]="key[0]">{{ key[0] }}</option>
+          <option *ngFor="let obj of currentData" [value]="obj.cc">{{ obj.cc }} / {{ obj.txt }}</option>
         </select>
 
         <div class="flex">
@@ -57,7 +57,7 @@
           id="to" 
           class="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option [ngValue]="undefined" disabled selected>Choose a currency</option>
-          <option *ngFor="let key of currentData" [value]="key[0]">{{ key[0] }}</option>
+          <option *ngFor="let obj of currentData" [value]="obj.cc">{{ obj.cc }} / {{ obj.txt }}</option>
         </select>
         
         <div class="flex">

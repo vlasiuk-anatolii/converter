@@ -1,6 +1,13 @@
 <header class="bg-gray-800 text-white py-4 px-6">
   <div class="container mx-auto flex justify-between items-center">
     <a href="#" class="text-xl font-semibold">Converter</a>
+
+    <div class="flex currencies">
+      <h2 class="block m-auto text-sm font-medium text-white-900 dark:text-white">USD: &nbsp;</h2>
+      <p class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-[60px] text-sm border-gray-300 p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-2">{{currentRateUSD}}</p>
+      <h2 class="block m-auto text-sm font-medium text-white-900 dark:text-white">EUR: &nbsp;</h2>
+      <p class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-[60px] text-sm border-gray-300 p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{currentRateEUR}}</p>
+    </div>
     
     <button class="burger-btn" (click)="toggleMenu()" [ngClass]="{'open': isMenuOpen}">
       <span class="burger-line"></span>
@@ -12,7 +19,7 @@
       <a href="#" class="text-gray-300 hover:text-white">Home</a>
       <a href="#" class="text-gray-300 hover:text-white">About</a>
       <a href="#" class="text-gray-300 hover:text-white">Contact</a>
-      <a (click)="openModal()"  href="#" class="text-gray-300 hover:text-white">Currency</a>
+      <a (click)="openModal()"  href="#" class="text-gray-300 hover:text-white">Converter</a>
     </nav>
   </div>
 </header>
