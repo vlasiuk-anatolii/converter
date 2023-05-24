@@ -13,7 +13,7 @@ export class CurrencyService {
   }
 
   getAll<T extends ICurrencyData>(): Observable<T> {
-    return this.http.get<T>('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json').pipe(
+    return this.http.get<T>('https://api.freecurrencyapi.com/v1/latest?apikey=HqgzuJADtAKIqng58YagF6xu1P1PTSlSdlJp54Sn').pipe(
       catchError(this.errorHandler.bind(this))
     );
   }
