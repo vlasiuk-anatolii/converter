@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.currencyService.getAll().subscribe((data) => {
       this.arrData = [...data];
+      console.log(data);
       const dollar = this.arrData.find(el => el.cc === 'USD');
       const evro = this.arrData.find(el => el.cc === 'EUR');
       

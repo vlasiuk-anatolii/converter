@@ -12,19 +12,26 @@ export class ModalComponent {
   selectedValueTo: string;
   inputValueFrom: number = 1;
   inputValueTo: number =  1;
+  inputValueAmountUAH: number;
   currentCourseFrom: number;
   currentCourseTo: number;
+  inputValueUAH: string;
   @Input() currentData: ICurrencyData[];
+  @Input() currentRateUSD: number;
   isModalOpen$ = this.modalService.isModalOpen$;
   constructor(private modalService: ModalService) {}
 
   onSelectFrom(): void {
     const currentCurrencyFrom = this.currentData.find(el => el.cc === this.selectedValueFrom);
+    const currentCurrencyTo = this.currentData.find(el => el.cc === this.selectedValueTo);
     this.inputValueFrom = 1;
+    this.inputValueUAH =`1$ = ${this.currentRateUSD}`;
 
-    if(currentCurrencyFrom) {
+    if(currentCurrencyFrom && currentCurrencyTo) {
       this.currentCourseFrom = currentCurrencyFrom.rate;
-      this.inputValueTo = this.currentCourseTo / this.currentCourseFrom;
+      this.currentCourseTo = currentCurrencyTo.rate;
+      this.inputValueTo = this.inputValueFrom * this.currentCourseFrom / this.currentCourseTo;
+      this.inputValueAmountUAH = this.inputValueFrom * this.currentCourseFrom;
     }
   }
 
@@ -34,17 +41,22 @@ export class ModalComponent {
     }
 
     if (this.selectedValueFrom && this.selectedValueTo) {
-      this.inputValueTo = this.inputValueFrom * this.currentCourseTo / this.currentCourseFrom;;
+      this.inputValueTo = this.inputValueFrom * this.currentCourseFrom / this.currentCourseTo;
+      this.inputValueAmountUAH = this.inputValueFrom * this.currentCourseFrom;
     }
   }
 
   onSelectTo(): void {
+    const currentCurrencyFrom = this.currentData.find(el => el.cc === this.selectedValueFrom);
     const currentCurrencyTo = this.currentData.find(el => el.cc === this.selectedValueTo);
     this.inputValueFrom = 1;
+    this.inputValueUAH =`1$ = ${this.currentRateUSD}`;
     
-    if(currentCurrencyTo) {
-      this.currentCourseTo = currentCurrencyTo.rate; 
-      this.inputValueTo = this.currentCourseTo / this.currentCourseFrom;
+    if(currentCurrencyFrom && currentCurrencyTo) {
+      this.currentCourseTo = currentCurrencyTo.rate;
+      this.currentCourseFrom = currentCurrencyFrom.rate;  
+      this.inputValueFrom = this.inputValueTo * this.currentCourseTo / this.currentCourseFrom;
+      this.inputValueAmountUAH = this.inputValueTo * this.currentCourseTo;
     }
   }
 
@@ -54,7 +66,8 @@ export class ModalComponent {
     }
     
     if (this.selectedValueFrom && this.selectedValueTo) {
-      this.inputValueFrom = this.inputValueTo * this.currentCourseFrom / this.currentCourseTo;
+      this.inputValueFrom = this.inputValueTo * this.currentCourseTo / this.currentCourseFrom;
+      this.inputValueAmountUAH = this.inputValueTo * this.currentCourseTo;
     }
   }
 
